@@ -4,9 +4,10 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
 
-public class Fiboncci extends UnicastRemoteObject implements RemoteFibonacci {
+public class Fibonacci extends UnicastRemoteObject implements RemoteFibonacci {
+	private static final long serialVersionUID = 1L;
 
-	protected Fiboncci(int port) throws RemoteException {
+	protected Fibonacci(int port) throws RemoteException {
 		super(port);
 	}
 
