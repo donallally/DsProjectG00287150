@@ -8,6 +8,8 @@
 <title>Results</title>
 </head>
 <body>
-
+<form action = "...."/>
+<label> Job Number: <%request.getAttribute("jobNumber");%></label>
+<label type = "text" name = "result" size = "20px"/>
 </body>
 </html>
