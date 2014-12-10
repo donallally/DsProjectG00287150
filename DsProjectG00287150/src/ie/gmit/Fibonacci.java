@@ -25,6 +25,7 @@ public class Fibonacci extends UnicastRemoteObject implements RemoteFibonacci {
 	}
 
 	public String add(String parameter) {
-		return null;
+		return parameter;
+		
 	}
 }

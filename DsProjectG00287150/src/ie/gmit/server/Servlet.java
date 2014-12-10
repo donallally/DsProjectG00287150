@@ -15,25 +15,30 @@ import javax.servlet.http.HttpServletResponse;
 public class Servlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private Fibonacci fs;
+	private FibService fs;
 
 	public Servlet() {
 		super();
-		try {
-			fs = new Fibonacci();
-		} 
-		catch (RemoteException e) {
-			e.printStackTrace();
+		fs = new FibService();
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String rType = request.getParameter("request-type");
+		if(rType.equals("Add")){
+			String number = "";
+					number += fs.add(Integer.parseInt(request.getParameter("max")));
+					
+			//out.write("Job Num:");
+		}
+		else if(rType.equals("Poll")){
+			String number = "";
+			response.getOutputStream().print(number);
+			number += fs.add(Integer.parseInt(request.getParameter("jobNumber")));
 		}
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-			IOException {
-
-	}
 
 }
