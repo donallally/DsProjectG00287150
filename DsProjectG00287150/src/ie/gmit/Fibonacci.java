@@ -7,9 +7,10 @@ import java.util.*;
 public class Fibonacci extends UnicastRemoteObject implements RemoteFibonacci {
 	private static final long serialVersionUID = 1L;
 
-	protected Fibonacci(int port) throws RemoteException {
-		super(port);
+	public Fibonacci() throws RemoteException {
+		super();
 	}
+
 
 	public String setFibonacciDequence(int max) throws RemoteException {
 		

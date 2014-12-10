@@ -1,4 +1,4 @@
-package ie.gmit;
+package ie.gmit.server;
 
 public class FibRequest {
 

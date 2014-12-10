@@ -1,6 +1,10 @@
-package ie.gmit;
+package ie.gmit.server;
+
+import ie.gmit.Fibonacci;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,18 +13,27 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public Servlet() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+	private static final long serialVersionUID = 1L;
+	private Fibonacci fs;
+
+	public Servlet() {
+		super();
+		try {
+			fs = new Fibonacci();
+		} 
+		catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException {
+
 	}
 
 }

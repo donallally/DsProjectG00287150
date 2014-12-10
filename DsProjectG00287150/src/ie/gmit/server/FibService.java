@@ -1,4 +1,4 @@
-package ie.gmit;
+package ie.gmit.server;
 
 import java.util.HashMap;
 import java.util.LinkedList;
