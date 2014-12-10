@@ -11,9 +11,14 @@ public class FibService {
 	public int add(int max) {
 		// generate random JOB number
 		int jobNumber = (int) Math.random();
+		inQueue.add(new FibRequest(jobNumber, max));
 		return jobNumber;
 	}
 
+	public void addResult(FibRequest fr, String result){
+		this.outQueue.put(fr.getJobNum(), result);
+	}
+	
 	public String getResult(int jobNumber) {
 		if (outQueue.containsKey(jobNumber)) {
 			String result = outQueue.get(jobNumber);

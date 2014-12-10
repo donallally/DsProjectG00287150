@@ -5,6 +5,11 @@ public class FibRequest {
 	private int jobNum;
 	private int max;
 
+	public FibRequest(int jobNumber, int max) {
+		this.jobNum = jobNumber;
+		this.max = max;
+	}
+
 	public int getJobNum() {
 		return jobNum;
 	}
