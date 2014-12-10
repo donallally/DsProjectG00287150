@@ -24,19 +24,21 @@ public class Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String rType = request.getParameter("request-type");
-		
+
 		if (rType.equals("Add")) {
 			String number = "";
 			number += fs.add(Integer.parseInt(request.getParameter("max")));
 			response.getOutputStream().print(number);
-		} 
-		else if (rType.equals("Poll")) {
+		} else if (rType.equals("Poll")) {
 			String jobNumber = "";
 			response.getOutputStream().print(jobNumber);
 			jobNumber += fs.add(Integer.parseInt(request.getParameter("jobNumber")));
-			
-			if(fs.getResult(Integer.parseInt(jobNumber)) != null){
-				
+
+			if (fs.getResult(Integer.parseInt(jobNumber)) != null) {
+				//response.sendRedirect("Interrim"); //send client to this page
+			}
+			else{
+				//response.sendRedirect("Results"); //send client to this page
 			}
 		}
 	}

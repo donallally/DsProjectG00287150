@@ -9,8 +9,9 @@
 </head>
 <body>
 	<form action="Servlet">
+	<input type="hidden" name="request-type" value="Add">
 		Please enter number between 1 and 100 <br> <input type="text"
-			name="number" size="20px"> <input type="submit"
+			name="max" size="20px"> <input type="submit"
 			value="submit">
 	</form>
 </body>

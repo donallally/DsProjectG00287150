@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="PollServlet" method = "get">
-<input type="hidden" name="request-type" value="poll">
+<input type="hidden" name="request-type" value="Poll">
 <label>Job Number: <%request.getAttribute("jobNumber");%></label>
 <label>Time: <%request.getAttribute("time");%></label>
 </form>
