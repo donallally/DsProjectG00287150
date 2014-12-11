@@ -28,10 +28,12 @@ public class Servlet extends HttpServlet {
 		if (rType.equals("Add")) {
 			String number = "";
 			number += fs.add(Integer.parseInt(request.getParameter("max")));
-			response.addHeader("jobNumber", number);
-			response.addHeader("Refresh","10");//refresh every 10 seconds
-			response.sendRedirect("Interrim.jsp");
-		} else if (rType.equals("Poll")) {
+			request.setAttribute("jobNumber", number);
+			request.setAttribute("timer", 10);
+			request.getRequestDispatcher("Interrim.jsp").forward(request, response);
+		} 
+		
+		else if (rType.equals("Poll")) {
 			String jobNumber = "";
 			response.getOutputStream().print(jobNumber);
 			jobNumber += fs.add(Integer.parseInt(request.getParameter("jobNumber")));
