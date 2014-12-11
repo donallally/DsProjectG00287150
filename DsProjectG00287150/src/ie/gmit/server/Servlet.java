@@ -39,11 +39,11 @@ public class Servlet extends HttpServlet {
 			jobNumber += fs.add(Integer.parseInt(request.getParameter("jobNumber")));
 			
 			if (fs.getResult(Integer.parseInt(jobNumber)) != null) {
-				response.sendRedirect("Results.jsp"); //send client to this page
+				request.getRequestDispatcher("Results.jsp").forward(request, response); //send client to this page
 				//if the result is found, display them
 			}
 			else{
-				response.sendRedirect("Interrim.jsp"); //send client to this page
+				request.getRequestDispatcher("Interrim.jsp").forward(request, response); //send client to this page
 				//if results are not found then continue to show wait
 			}
 		}
