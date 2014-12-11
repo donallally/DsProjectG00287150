@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Interrim</title>
 </head>
 <body>
 <form action="PollServlet" method = "get">
 <input type="hidden" name="request-type" value="Poll">
-<label>Job Number: <%request.getAttribute("jobNumber");%></label>
+<label>Job Number: <%request.getAttribute("jobNumber");%> </label><br>
 <label>Time: <%request.getAttribute("time");%></label>
 </form>
 </body>
