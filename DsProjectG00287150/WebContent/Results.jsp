@@ -9,7 +9,8 @@
 </head>
 <body>
 <form action = "...."/>
-<label> Job Number: <%request.getAttribute("jobNumber");%></label>
+<label> Job Number: ${ jobNumber }</label><br>
+<label> Results: ${ results }</label>
 <label type = "text" name = "result" size = "20px"/>
 </body>
 </html>

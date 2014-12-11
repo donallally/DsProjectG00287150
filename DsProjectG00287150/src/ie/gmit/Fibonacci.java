@@ -11,21 +11,21 @@ public class Fibonacci extends UnicastRemoteObject implements RemoteFibonacci {
 		super();
 	}
 
-
 	public String setFibonacciDequence(int max) throws RemoteException {
-		
+
 		return null;
 	}
-	public List<Integer> genFib(int number) throws RemoteException{
+
+	public List<Integer> genFib(int number) throws RemoteException {
 		List<Integer> results = new ArrayList<Integer>();
-		for (int i=0; i<number; i++){
-			results.add((int) Math.round(Math.pow(Math.sqrt(5)+1, i) / (Math.pow(2, i) * Math.sqrt(5))));
+		for (int i = 0; i < number; i++) {
+			results.add((int) Math.round(Math.pow(Math.sqrt(5) + 1, i) / (Math.pow(2, i) * Math.sqrt(5))));
 		}
 		return results;
 	}
 
 	public String add(String parameter) {
 		return parameter;
-		
+
 	}
 }

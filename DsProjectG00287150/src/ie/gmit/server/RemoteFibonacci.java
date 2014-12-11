@@ -1,9 +1,9 @@
 package ie.gmit.server;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
+import java.rmi.*;
+import java.util.*;
 
 public interface RemoteFibonacci extends Remote{
-
-	public String setFibonacciDequence(int max) throws RemoteException;
+	
+	public String genFib(int number) throws RemoteException ;
 }

@@ -2,20 +2,20 @@ package ie.gmit.server;
 
 public class FibRequest {
 
-	private int jobNum;
+	private int JobNumber;
 	private int max;
-
-	public FibRequest(int jobNumber, int max) {
-		this.jobNum = jobNumber;
+	
+	public FibRequest(int JobNumber, int max){
+		this.JobNumber = JobNumber;
 		this.max = max;
 	}
 
-	public int getJobNum() {
-		return jobNum;
+	public int getJobNumber() {
+		return JobNumber;
 	}
 
-	public void setJobNum(int jobNum) {
-		this.jobNum = jobNum;
+	public void setJobNumber(int jobNumber) {
+		JobNumber = jobNumber;
 	}
 
 	public int getMax() {
@@ -25,5 +25,4 @@ public class FibRequest {
 	public void setMax(int max) {
 		this.max = max;
 	}
-
 }

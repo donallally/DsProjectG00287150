@@ -1,10 +1,9 @@
 package ie.gmit.server;
 
-import ie.gmit.Fibonacci;
-
 import java.io.IOException;
-import java.rmi.RemoteException;
+import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,44 +12,45 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
-
 	private static final long serialVersionUID = 1L;
 	private FibService fs;
 
 	public Servlet() {
 		super();
-		fs = new FibService();
+	}
+
+	public void init(ServletConfig config) throws ServletException {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String rType = request.getParameter("request-type");
 
+		if (fs == null) {
+			fs = new FibService();
+		}
+		String rType = request.getSession().getAttribute("request-type").toString();
 		if (rType.equals("Add")) {
-			String number = "";
-			number += fs.add(Integer.parseInt(request.getParameter("max")));
-			request.setAttribute("jobNumber", number);
-			request.setAttribute("timer", 10);
-			request.getRequestDispatcher("Interrim.jsp").forward(request, response);
-		} 
-		
-		else if (rType.equals("Poll")) {
 			String jobNumber = "";
-			response.getOutputStream().print(jobNumber);
-			jobNumber += fs.add(Integer.parseInt(request.getParameter("jobNumber")));
-			
-			if (fs.getResult(Integer.parseInt(jobNumber)) != null) {
-				request.getRequestDispatcher("Results.jsp").forward(request, response); //send client to this page
-				//if the result is found, display them
+			jobNumber += fs.add(Integer.parseInt(request.getParameter("number")));
+			request.getSession().setAttribute("jobNumber", jobNumber);
+			request.getSession().setAttribute("timer", 10);
+			request.getRequestDispatcher("Interrim.jsp").forward(request, response);
+		} else if (rType.equals("Poll")) {
+			String results = "";
+			try {
+				results += fs.getResult(Integer.parseInt(request.getSession().getAttribute("jobNumber").toString()));
+			} catch (NumberFormatException e) {
+				e.getMessage();
 			}
-			else{
-				request.getRequestDispatcher("Interrim.jsp").forward(request, response); //send client to this page
-				//if results are not found then continue to show wait
+			if (!results.equals("") || results != null) {
+				request.getSession().setAttribute("results", results);
+				request.getRequestDispatcher("Results.jsp").forward(request, response);
+			} else {
+				request.getRequestDispatcher("Interrim.jsp").forward(request, response);
 			}
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		doGet(request, response);
 	}
-
 }
