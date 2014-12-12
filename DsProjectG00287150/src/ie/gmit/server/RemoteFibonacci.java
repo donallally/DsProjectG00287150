@@ -1,7 +1,6 @@
 package ie.gmit.server;
 
 import java.rmi.*;
-import java.util.*;
 
 public interface RemoteFibonacci extends Remote{
 	
